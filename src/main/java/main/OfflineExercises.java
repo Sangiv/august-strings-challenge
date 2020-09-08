@@ -11,7 +11,14 @@ public class OfflineExercises {
 	// multChar("Hi-There") returns "HHHiii---TTThhheeerrreee"
 
 	public String multChar(String input) {
-		return "";
+		String output = "";
+		
+		for(int i = 0; i < input.length(); i++) {
+			output += input.charAt(i);
+			output += input.charAt(i);
+			output += input.charAt(i);
+		}
+		return output;
 	}
 
 	// Return the string (backwards) that is between the first and last appearance
@@ -25,10 +32,25 @@ public class OfflineExercises {
 	// getBert("xxbertyy") returns ""
 	// getBert("xxbeRTyy") returns ""
 
-	public String getBert(String input) {
-		return "";
-	}
-
+	public String getBert(String input) { 
+		String out = ""; 
+		input = input.toLowerCase(); 
+		StringBuffer output = new StringBuffer(input); 
+		if (input.contains("bert")) { 
+			if (input.indexOf("bert") == 0){output.replace(0, 4, ""); 
+			} else { 
+				output.replace( 0 , output.indexOf("bert")+4,"");
+			}
+		} 
+		if (output.indexOf("bert") == -1) { 
+			return ""; 
+		} else { 
+			output.replace(output.indexOf("bert"), input.length() - 1, "");
+		} 
+		output.reverse(); 
+		out = output.toString(); 
+		System.out.println(out); 
+		return out; }
 	// Given three ints, a b c, one of them is small, one is medium and one is
 	// large. Return true if the three values are evenly spaced, so the
 	// difference between small and medium is the same as the difference between
@@ -41,7 +63,11 @@ public class OfflineExercises {
 	// evenlySpaced(4, 60, 9) returns false
 
 	public boolean evenlySpaced(int a, int b, int c) {
-		return false;
+		if((Math.abs(a - b) == Math.abs(b-c)) || (Math.abs(a - c) == Math.abs(b-c)) || (Math.abs(a - c) == Math.abs(b-a))) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	// Given a string and an int n, return a string that removes n letters from the
@@ -54,7 +80,13 @@ public class OfflineExercises {
 	// nMid("Chocolate", 1) returns "Choclate"
 
 	public String nMid(String input, int a) {
-		return "";
+		String output = input;
+		int midpoint = input.length()/2;
+		
+		while(a != 0) {
+			input.replace(input.codePointAt(midpoint), "");
+		}
+		return output;
 	}
 
 	// Given a string, return true if it ends in "dev". Ignore Case
